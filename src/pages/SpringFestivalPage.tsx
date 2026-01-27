@@ -1,10 +1,17 @@
-import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Download, Share2, RefreshCw } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { ArrowLeft, Download, Share2, RefreshCw, Copy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { toast } from 'sonner';
 import html2canvas from 'html2canvas';
 import MoneyFirewall from '@/components/festival/MoneyFirewall';
@@ -12,6 +19,7 @@ import SpringBill from '@/components/festival/SpringBill';
 
 export default function SpringFestivalPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const posterRef = useRef<HTMLDivElement>(null);
   const [income, setIncome] = useState('');
   const [debt, setDebt] = useState('');
@@ -19,6 +27,27 @@ export default function SpringFestivalPage() {
   const [posterGenerated, setPosterGenerated] = useState(false);
   const [activeTab, setActiveTab] = useState<'poster' | 'firewall' | 'bill'>('poster');
   const [isDownloading, setIsDownloading] = useState(false);
+  const [showShareDialog, setShowShareDialog] = useState(false);
+  const [shareLink, setShareLink] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  // 处理分享链接参数
+  useEffect(() => {
+    const fromShare = searchParams.get('from');
+    if (fromShare === 'share') {
+      const sharedIncome = searchParams.get('income');
+      const sharedDebt = searchParams.get('debt');
+      const sharedSavings = searchParams.get('savings');
+      
+      if (sharedIncome && sharedDebt && sharedSavings) {
+        setIncome(sharedIncome);
+        setDebt(sharedDebt);
+        setSavings(sharedSavings);
+        setPosterGenerated(true);
+        toast.success('已加载好友分享的海报数据');
+      }
+    }
+  }, [searchParams]);
 
   const handleGenerate = () => {
     if (!income || !debt || !savings) {
@@ -62,94 +91,43 @@ export default function SpringFestivalPage() {
     }
   };
 
-  const handleShare = async () => {
-    if (!posterRef.current) {
-      toast.error('海报未生成');
-      return;
-    }
+  const handleShare = () => {
+    // 生成分享链接（包含海报数据）
+    const posterData = {
+      income,
+      debt,
+      savings,
+      timestamp: Date.now()
+    };
     
-    toast.loading('正在生成分享图片...');
+    // 将数据编码到URL参数中
+    const params = new URLSearchParams({
+      income,
+      debt,
+      savings
+    });
     
+    // 生成完整的分享链接
+    const baseUrl = window.location.origin + window.location.pathname;
+    const fullShareLink = `${baseUrl}?from=share&${params.toString()}`;
+    
+    setShareLink(fullShareLink);
+    setShowShareDialog(true);
+    setCopied(false);
+  };
+
+  const handleCopyLink = async () => {
     try {
-      const canvas = await html2canvas(posterRef.current, {
-        backgroundColor: '#ffffff',
-        scale: 2,
-        useCORS: true,
-        logging: false
-      });
+      await navigator.clipboard.writeText(shareLink);
+      setCopied(true);
+      toast.success('链接已复制到剪贴板');
       
-      canvas.toBlob(async (blob) => {
-        if (!blob) {
-          toast.dismiss();
-          toast.error('生成图片失败');
-          return;
-        }
-        
-        const file = new File([blob], '省点吧-春节海报.png', { type: 'image/png' });
-        
-        // 优先尝试 Web Share API
-        if (navigator.share) {
-          try {
-            // 检查是否支持文件分享
-            const canShareFiles = navigator.canShare && navigator.canShare({ files: [file] });
-            
-            if (canShareFiles) {
-              await navigator.share({
-                files: [file],
-                title: '我的2026年度总结',
-                text: '今年真的太难了😭'
-              });
-              toast.dismiss();
-              toast.success('分享成功');
-              return;
-            } else {
-              // 不支持文件分享，尝试只分享文本
-              await navigator.share({
-                title: '我的2026年度总结',
-                text: '今年真的太难了😭\n\n来自省点吧春节特辑'
-              });
-              toast.dismiss();
-              toast.info('已分享文本，请手动保存图片后一起发送');
-              return;
-            }
-          } catch (error: any) {
-            if (error.name === 'AbortError') {
-              toast.dismiss();
-              return; // 用户取消分享
-            }
-            console.error('Web Share API 失败:', error);
-          }
-        }
-        
-        // 降级方案1：复制图片到剪贴板
-        if (navigator.clipboard && navigator.clipboard.write) {
-          try {
-            await navigator.clipboard.write([
-              new ClipboardItem({ 'image/png': blob })
-            ]);
-            toast.dismiss();
-            toast.success('图片已复制到剪贴板，可以粘贴分享');
-            return;
-          } catch (error) {
-            console.error('复制到剪贴板失败:', error);
-          }
-        }
-        
-        // 降级方案2：自动下载图片
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.download = `省点吧-春节海报-${Date.now()}.png`;
-        link.href = url;
-        link.click();
-        URL.revokeObjectURL(url);
-        
-        toast.dismiss();
-        toast.success('图片已保存，请手动分享');
-      }, 'image/png');
+      // 3秒后重置复制状态
+      setTimeout(() => {
+        setCopied(false);
+      }, 3000);
     } catch (error) {
-      console.error('分享失败:', error);
-      toast.dismiss();
-      toast.error('分享失败，请使用保存按钮');
+      toast.error('复制失败，请手动复制');
     }
   };
 
@@ -373,6 +351,119 @@ export default function SpringFestivalPage() {
         {/* 春节消费账单 */}
         {activeTab === 'bill' && <SpringBill />}
       </div>
+
+      {/* 分享对话框 */}
+      <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Share2 className="w-5 h-5 text-secondary" />
+              分享海报
+            </DialogTitle>
+            <DialogDescription>
+              复制链接分享给好友，让他们也来生成自己的贫困潦倒海报
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            {/* 分享链接 */}
+            <div className="space-y-2">
+              <Label>分享链接</Label>
+              <div className="flex items-center gap-2">
+                <Input
+                  value={shareLink}
+                  readOnly
+                  className="flex-1 text-sm"
+                  onClick={(e) => e.currentTarget.select()}
+                />
+                <Button
+                  size="icon"
+                  variant={copied ? 'default' : 'outline'}
+                  onClick={handleCopyLink}
+                  className={copied ? 'bg-merit-green hover:bg-merit-green' : ''}
+                >
+                  {copied ? (
+                    <Check className="w-4 h-4" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                </Button>
+              </div>
+            </div>
+
+            {/* 分享说明 */}
+            <Card className="p-4 bg-gradient-to-r from-secondary/10 to-primary/10">
+              <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                <span className="text-xl">🎯</span>
+                裂变玩法
+              </h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• 好友点击链接可以看到你的"惨状"</li>
+                <li>• 好友也可以生成自己的海报</li>
+                <li>• 形成裂变传播，让更多人加入</li>
+                <li>• 一起在春节期间"比惨"</li>
+              </ul>
+            </Card>
+
+            {/* 分享渠道 */}
+            <div className="space-y-2">
+              <Label>快速分享到</Label>
+              <div className="grid grid-cols-2 gap-2">
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    window.open(`https://service.weibo.com/share/share.php?url=${encodeURIComponent(shareLink)}&title=${encodeURIComponent('我的2026年度总结，今年真的太难了😭')}`, '_blank');
+                  }}
+                >
+                  <span className="text-xl mr-2">📱</span>
+                  微博
+                </Button>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    handleCopyLink();
+                    toast.info('请在微信中粘贴链接分享');
+                  }}
+                >
+                  <span className="text-xl mr-2">💬</span>
+                  微信
+                </Button>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    window.open(`https://connect.qq.com/widget/shareqq/index.html?url=${encodeURIComponent(shareLink)}&title=${encodeURIComponent('我的2026年度总结')}`, '_blank');
+                  }}
+                >
+                  <span className="text-xl mr-2">🐧</span>
+                  QQ
+                </Button>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    handleCopyLink();
+                    toast.info('链接已复制，可以分享到任何平台');
+                  }}
+                >
+                  <span className="text-xl mr-2">🔗</span>
+                  更多
+                </Button>
+              </div>
+            </div>
+
+            {/* 关闭按钮 */}
+            <Button
+              className="w-full pdd-button"
+              onClick={() => setShowShareDialog(false)}
+            >
+              我知道了
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
