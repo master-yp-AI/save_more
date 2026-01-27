@@ -63,7 +63,12 @@ export default function SpringFestivalPage() {
   };
 
   const handleShare = async () => {
-    if (!posterRef.current) return;
+    if (!posterRef.current) {
+      toast.error('海报未生成');
+      return;
+    }
+    
+    toast.loading('正在生成分享图片...');
     
     try {
       const canvas = await html2canvas(posterRef.current, {
@@ -75,40 +80,76 @@ export default function SpringFestivalPage() {
       
       canvas.toBlob(async (blob) => {
         if (!blob) {
+          toast.dismiss();
           toast.error('生成图片失败');
           return;
         }
         
         const file = new File([blob], '省点吧-春节海报.png', { type: 'image/png' });
         
-        if (navigator.share && navigator.canShare({ files: [file] })) {
+        // 优先尝试 Web Share API
+        if (navigator.share) {
           try {
-            await navigator.share({
-              files: [file],
-              title: '我的2026年度总结',
-              text: '今年真的太难了😭'
-            });
-            toast.success('分享成功');
-          } catch (error: any) {
-            if (error.name !== 'AbortError') {
-              toast.error('分享失败');
+            // 检查是否支持文件分享
+            const canShareFiles = navigator.canShare && navigator.canShare({ files: [file] });
+            
+            if (canShareFiles) {
+              await navigator.share({
+                files: [file],
+                title: '我的2026年度总结',
+                text: '今年真的太难了😭'
+              });
+              toast.dismiss();
+              toast.success('分享成功');
+              return;
+            } else {
+              // 不支持文件分享，尝试只分享文本
+              await navigator.share({
+                title: '我的2026年度总结',
+                text: '今年真的太难了😭\n\n来自省点吧春节特辑'
+              });
+              toast.dismiss();
+              toast.info('已分享文本，请手动保存图片后一起发送');
+              return;
             }
+          } catch (error: any) {
+            if (error.name === 'AbortError') {
+              toast.dismiss();
+              return; // 用户取消分享
+            }
+            console.error('Web Share API 失败:', error);
           }
-        } else {
-          // 降级方案：复制图片到剪贴板
+        }
+        
+        // 降级方案1：复制图片到剪贴板
+        if (navigator.clipboard && navigator.clipboard.write) {
           try {
             await navigator.clipboard.write([
               new ClipboardItem({ 'image/png': blob })
             ]);
+            toast.dismiss();
             toast.success('图片已复制到剪贴板，可以粘贴分享');
-          } catch {
-            toast.info('请长按图片保存后手动分享');
+            return;
+          } catch (error) {
+            console.error('复制到剪贴板失败:', error);
           }
         }
+        
+        // 降级方案2：自动下载图片
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `省点吧-春节海报-${Date.now()}.png`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+        
+        toast.dismiss();
+        toast.success('图片已保存，请手动分享');
       }, 'image/png');
     } catch (error) {
       console.error('分享失败:', error);
-      toast.error('分享失败，请重试');
+      toast.dismiss();
+      toast.error('分享失败，请使用保存按钮');
     }
   };
 
