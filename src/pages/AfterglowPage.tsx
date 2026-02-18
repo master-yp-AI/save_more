@@ -53,7 +53,7 @@ export default function AfterglowPage() {
       
       try {
         // 调用AI灵魂共鸣Edge Function
-        const response = await fetch('https://app-93vxdy5v8bnl-supabase.appmiaoda.com/functions/v1/soul-echo', {
+        const response = await fetch('https://app-9pjyq18643cx-supabase.appmiaoda.com/functions/v1/soul-echo', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

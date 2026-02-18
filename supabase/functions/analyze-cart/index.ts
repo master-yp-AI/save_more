@@ -66,7 +66,7 @@ Deno.serve(async (req) => {
 3. 一句点睛的反思`;
 
     // 调用文心大模型API
-    const apiUrl = 'https://app-93vxdy5v8bnl-api-zYkZz8qovQ1L-gateway.appmiaoda.com/v2/chat/completions';
+    const apiUrl = 'https://app-9pjyq18643cx-api-zYkZz8qovQ1L-gateway.appmiaoda.com/v2/chat/completions';
     
     const response = await fetch(apiUrl, {
       method: 'POST',

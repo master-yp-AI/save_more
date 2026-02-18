@@ -118,7 +118,7 @@ export default function CameraPage() {
     
     try {
       // 调用Edge Function进行图像识别
-      const response = await fetch('https://app-93vxdy5v8bnl-supabase.appmiaoda.com/functions/v1/image-recognition', {
+      const response = await fetch('https://app-9pjyq18643cx-supabase.appmiaoda.com/functions/v1/image-recognition', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

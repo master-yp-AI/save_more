@@ -55,7 +55,7 @@ export default function GuiltPage() {
         }
 
         // 调用AI分析Edge Function
-        const response = await fetch('https://app-93vxdy5v8bnl-supabase.appmiaoda.com/functions/v1/analyze-cart', {
+        const response = await fetch('https://app-9pjyq18643cx-supabase.appmiaoda.com/functions/v1/analyze-cart', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

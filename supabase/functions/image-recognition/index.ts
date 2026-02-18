@@ -45,7 +45,7 @@ Deno.serve(async (req) => {
     }
 
     // 调用百度图像识别API
-    const apiUrl = 'https://app-93vxdy5v8bnl-api-zYm4zKQoePjL-gateway.appmiaoda.com/rest/2.0/image-classify/v2/advanced_general';
+    const apiUrl = 'https://app-9pjyq18643cx-api-zYm4zKQoePjL-gateway.appmiaoda.com/rest/2.0/image-classify/v2/advanced_general';
     
     const formData = new URLSearchParams();
     formData.append('image', imageData);
