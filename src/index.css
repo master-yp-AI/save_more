@@ -1,0 +1,147 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* 禁欲系冷色调 - 莫兰迪蓝灰 */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 20%;
+    /* 主色调 - 深灰蓝（禁欲系） */
+    --primary: 215 20% 45%;
+    --primary-foreground: 0 0% 100%;
+    /* 辅助色 - 拼多多红 */
+    --secondary: 4 85% 52%;
+    --secondary-foreground: 0 0% 100%;
+    /* 柔和背景色 */
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 50%;
+    /* 强调色 - 极淡的蓝灰 */
+    --accent: 210 25% 92%;
+    --accent-foreground: 215 25% 20%;
+    /* 警示色 - 劝败红 */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    /* 边框和输入 */
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 215 20% 45%;
+    /* 图表色 */
+    --chart-1: 12 88% 55%;
+    --chart-2: 215 20% 45%;
+    --chart-3: 195 25% 50%;
+    --chart-4: 35 85% 60%;
+    --chart-5: 280 15% 55%;
+    /* 侧边栏 */
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 215 25% 20%;
+    --sidebar-primary: 215 20% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 25% 92%;
+    --sidebar-accent-foreground: 215 25% 20%;
+    --sidebar-border: 215 20% 88%;
+    --sidebar-ring: 215 20% 45%;
+    /* 拼多多风格红色 */
+    --pdd-orange: 4 85% 52%;
+    --pdd-orange-light: 4 85% 97%;
+    --pdd-orange-dark: 4 85% 42%;
+    /* 拼多多价格红 */
+    --pdd-price-red: 4 85% 52%;
+    /* 功德值绿色 */
+    --merit-green: 142 71% 45%;
+    --merit-green-light: 142 71% 95%;
+    /* 警示黄色 */
+    --warning-yellow: 45 93% 58%;
+    --warning-yellow-light: 45 93% 95%;
+  }
+
+  .dark {
+    --background: 215 25% 12%;
+    --foreground: 210 20% 95%;
+    --card: 215 25% 15%;
+    --card-foreground: 210 20% 95%;
+    --popover: 215 25% 15%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 215 20% 65%;
+    --primary-foreground: 215 25% 12%;
+    --secondary: 4 85% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 15% 60%;
+    --accent: 215 25% 18%;
+    --accent-foreground: 210 20% 95%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 25%;
+    --input: 215 25% 25%;
+    --ring: 215 20% 65%;
+    --chart-1: 12 88% 55%;
+    --chart-2: 215 20% 65%;
+    --chart-3: 195 25% 60%;
+    --chart-4: 35 85% 65%;
+    --chart-5: 280 15% 65%;
+    --sidebar-background: 215 25% 12%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 215 20% 65%;
+    --sidebar-primary-foreground: 215 25% 12%;
+    --sidebar-accent: 215 25% 18%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 25% 25%;
+    --sidebar-ring: 215 20% 65%;
+    --pdd-orange: 4 85% 52%;
+    --pdd-orange-light: 4 85% 20%;
+    --pdd-orange-dark: 4 85% 65%;
+    --pdd-price-red: 4 85% 52%;
+    --merit-green: 142 71% 55%;
+    --merit-green-light: 142 71% 20%;
+    --warning-yellow: 45 93% 65%;
+    --warning-yellow-light: 45 93% 20%;
+  }
+}
+
+@layer utilities {
+  /* 渐变文字效果 */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  
+  /* 拼多多风格按钮 */
+  .pdd-button {
+    @apply bg-secondary text-secondary-foreground hover:opacity-90 transition-opacity;
+  }
+  
+  /* 劝败警示效果 */
+  .warning-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
