@@ -38,7 +38,7 @@ export default function BannerCarousel() {
   }, [api]);
 
   return (
-    <div className="relative px-4 py-3">
+    <div className="relative px-4 lg:px-6 py-3">
       <Carousel
         setApi={setApi}
         opts={{

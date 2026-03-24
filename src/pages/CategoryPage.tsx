@@ -25,10 +25,10 @@ export default function CategoryPage() {
     : mockProducts.filter(p => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0 lg:pl-56">
       {/* 顶部导航 */}
       <div className="sticky top-0 z-50 bg-primary text-primary-foreground">
-        <div className="flex items-center justify-between p-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
           <Button
             size="icon"
             variant="ghost"
@@ -44,7 +44,7 @@ export default function CategoryPage() {
 
       <div className="flex h-[calc(100vh-8rem)]">
         {/* 左侧分类列表 */}
-        <div className="w-24 bg-muted border-r border-border overflow-y-auto">
+        <div className="w-24 lg:w-40 bg-muted border-r border-border overflow-y-auto">
           {categories.map((category) => (
             <button
               key={category.id}
@@ -81,7 +81,7 @@ export default function CategoryPage() {
 
             {/* 商品网格 */}
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

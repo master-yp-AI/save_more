@@ -151,10 +151,10 @@ export default function ProductDetailPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-20 lg:pb-8">
       {/* 顶部导航 */}
       <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="flex items-center justify-between p-4">
+        <div className="max-w-5xl mx-auto flex items-center justify-between p-4">
           <Button
             size="icon"
             variant="ghost"

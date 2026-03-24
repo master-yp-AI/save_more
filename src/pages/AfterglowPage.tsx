@@ -342,7 +342,7 @@ export default function AfterglowPage() {
                     第 {refusalCount} 次断念
                   </Badge>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                   <div className="bg-muted/30 p-4 rounded-lg text-center">
                     <p className="text-sm text-muted-foreground mb-1">累计拒绝</p>
                     <p className="text-3xl font-bold text-foreground">{refusalCount}</p>

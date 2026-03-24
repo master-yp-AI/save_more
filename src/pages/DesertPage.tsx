@@ -44,7 +44,7 @@ export default function DesertPage() {
     <div className="min-h-screen bg-background">
       {/* 顶部导航 */}
       <div className="sticky top-0 z-50 bg-merit-green text-white">
-        <div className="flex items-center justify-between p-4">
+        <div className="max-w-5xl mx-auto flex items-center justify-between p-4">
           <Button
             size="icon"
             variant="ghost"
@@ -101,7 +101,7 @@ export default function DesertPage() {
         </Card>
 
         {/* 统计信息 */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <Card className="p-4 text-center">
             <p className="text-sm text-muted-foreground mb-1">连续未购物</p>
             <p className="text-3xl font-bold text-merit-green">{daysWithoutShopping}</p>
@@ -116,7 +116,7 @@ export default function DesertPage() {
 
         {/* 操作按钮 */}
         {!isDesert && (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             <Button
               variant="outline"
               onClick={handleCheckIn}

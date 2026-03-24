@@ -108,10 +108,10 @@ export default function CartPage() {
     .reduce((sum, item) => sum + item.currentPrice * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-background pb-32">
+    <div className="min-h-screen bg-background pb-32 lg:pb-0 lg:pl-56">
       {/* 顶部导航 */}
       <div className="sticky top-0 z-50 bg-background border-b border-border">
-        <div className="flex items-center justify-between p-4">
+        <div className="max-w-5xl mx-auto flex items-center justify-between p-4">
           <Button
             size="icon"
             variant="ghost"
@@ -139,7 +139,7 @@ export default function CartPage() {
           <Button onClick={() => navigate('/')}>去首页看看</Button>
         </div>
       ) : (
-        <div className="p-4 space-y-3">
+        <div className="max-w-5xl mx-auto p-4 lg:p-6 space-y-3">
           {/* 必需品提醒 */}
           <Card className="p-4 bg-warning-yellow-light border-warning-yellow/30">
             <div className="flex items-start gap-3">
@@ -237,7 +237,7 @@ export default function CartPage() {
 
       {/* 底部结算栏 */}
       {cartItems.length > 0 && (
-        <div className="fixed bottom-16 left-0 right-0 bg-card border-t border-border p-4">
+        <div className="fixed bottom-16 lg:bottom-0 left-0 lg:left-56 right-0 bg-card border-t border-border p-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Checkbox

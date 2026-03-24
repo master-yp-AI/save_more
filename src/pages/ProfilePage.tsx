@@ -87,10 +87,10 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0 lg:pl-56">
       {/* 顶部导航 */}
       <div className="sticky top-0 z-50 bg-background border-b border-border">
-        <div className="flex items-center justify-between p-4">
+        <div className="max-w-5xl mx-auto flex items-center justify-between p-4">
           <h1 className="text-lg font-bold text-foreground">个人中心</h1>
           <Button
             size="icon"
@@ -102,7 +102,7 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <div className="p-4 space-y-4">
+      <div className="max-w-5xl mx-auto p-4 lg:p-6 space-y-4 lg:space-y-6">
         {/* 用户信息 */}
         <Card className="p-6">
           <div className="flex items-center gap-4 mb-4">

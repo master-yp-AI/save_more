@@ -52,8 +52,10 @@ export default function TopNav({
   return (
     <div className="sticky top-0 z-50 bg-secondary text-secondary-foreground">
       {/* 搜索栏 */}
-      <div className="flex items-center gap-2 p-3">
-        <form onSubmit={handleSearchSubmit} className="flex-1 relative">
+      <div className="max-w-7xl mx-auto flex items-center gap-2 lg:gap-4 p-3 lg:px-6">
+        {/* 桌面端 Logo（移动端隐藏，因为侧边栏有 logo） */}
+        <span className="hidden lg:block text-lg font-bold text-secondary-foreground whitespace-nowrap">省点吧</span>
+        <form onSubmit={handleSearchSubmit} className="flex-1 relative lg:max-w-xl">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
             type="text"
@@ -95,7 +97,7 @@ export default function TopNav({
       </div>
 
       {/* 分类标签 */}
-      <div className="flex items-center gap-2 px-4 py-2 overflow-x-auto scrollbar-hide">
+      <div className="max-w-7xl mx-auto flex items-center gap-2 lg:gap-3 px-4 lg:px-6 py-2 overflow-x-auto scrollbar-hide">
         {allCategories.map((category) => (
           <button
             key={category.id}

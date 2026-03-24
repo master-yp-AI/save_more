@@ -75,7 +75,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0 lg:pl-56">
       <TopNav 
         cartCount={cartCount}
         selectedCategory={selectedCategory}
@@ -83,12 +83,12 @@ export default function HomePage() {
         onSearch={handleSearch}
       />
 
-      <div className="space-y-4">
+      <div className="max-w-7xl mx-auto space-y-4 lg:space-y-6">
         {/* 横幅轮播 */}
         <BannerCarousel />
 
         {/* 拼小圈入口 */}
-        <div className="px-4">
+        <div className="px-4 lg:px-6">
           <Card className="p-4 bg-gradient-to-r from-pdd-orange-light to-secondary/10 border-secondary/20">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -117,8 +117,8 @@ export default function HomePage() {
         <ActivityEntries />
 
         {/* 百亿补贴改为百亿愧疚 */}
-        <div className="px-4">
-          <Card className="p-4 bg-gradient-to-r from-warning-yellow-light to-destructive/10 border-warning-yellow/20">
+        <div className="px-4 lg:px-6">
+          <Card className="p-4 lg:p-6 bg-gradient-to-r from-warning-yellow-light to-destructive/10 border-warning-yellow/20">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-bold text-foreground">百亿愧疚</h3>
@@ -132,9 +132,9 @@ export default function HomePage() {
         </div>
 
         {/* 商品推荐区 */}
-        <div className="px-2">
-          <div className="flex items-center justify-between mb-2 px-1">
-            <h2 className="text-lg font-bold text-foreground">
+        <div className="px-2 lg:px-6">
+          <div className="flex items-center justify-between mb-2 px-1 lg:mb-4">
+            <h2 className="text-lg lg:text-xl font-bold text-foreground">
               {searchKeyword 
                 ? `搜索"${searchKeyword}"` 
                 : selectedCategory === '热门' 
@@ -152,7 +152,7 @@ export default function HomePage() {
             </p>
           </div>
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 lg:gap-4">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

@@ -1,98 +1,144 @@
-## 介绍
+# 🛡️ 省点吧 (Save More)
 
-项目介绍
+> **与其拼单，不如从源头切断消费欲望。**
 
-## 目录结构
+一款反向复刻拼多多的娱乐性 Web 应用 —— 别人帮你砍价，我们帮你涨价；别人补贴你买买买，我们用 AI 劝你省省省。
 
-```
-├── README.md # 说明文档
-├── components.json # 组件库配置
-├── index.html # 入口文件
-├── package.json # 包管理
-├── postcss.config.js # postcss 配置
-├── public # 静态资源目录
-│   ├── favicon.png # 图标
-│   └── images # 图片资源
-├── src # 源码目录
-│   ├── App.tsx # 入口文件
-│   ├── components # 组件目录
-│   ├── contexts # 上下文目录
-│   ├── db # 数据库配置目录
-│   ├── hooks # 通用钩子函数目录
-│   ├── index.css # 全局样式
-│   ├── layout # 布局目录
-│   ├── lib # 工具库目录
-│   ├── main.tsx # 入口文件
-│   ├── routes.tsx # 路由配置
-│   ├── pages # 页面目录
-│   ├── services  # 数据库交互目录
-│   ├── types   # 类型定义目录
-├── tsconfig.app.json  # ts 前端配置文件
-├── tsconfig.json # ts 配置文件
-├── tsconfig.node.json # ts node端配置文件
-└── vite.config.ts # vite 配置文件
-```
+用魔法打败魔法，用幽默对抗冲动消费。
 
-## 技术栈
+---
 
-Vite、TypeScript、React、Supabase
+## ✨ 功能亮点
 
-## 本地开发
+### 🔪 劝一刀（The Reverse Slash）
+别人砍价砍到 0 元，我们帮你涨价涨到离谱。分享给好友，每个人点一下，商品价格自动上浮 20%，直到你彻底放弃购买。
 
-### 如何在本地编辑代码？
+### 💸 百亿愧疚（10 Billion Guilt Trip）
+拼多多搞百亿补贴，我们搞百亿愧疚。AI 分析你购物车里的商品，告诉你这些钱够吃多少顿外卖、退休后够喝多少碗稀饭。
 
-您可以选择 [VSCode](https://code.visualstudio.com/Download) 或者您常用的任何 IDE 编辑器，唯一的要求是安装 Node.js 和 npm.
+### 🌵 荒漠求生（The Ascetic Desert）
+屏幕上有 100 根欲望之草，每次忍住不购物就拔掉几根。当所有草拔光变成荒漠，系统颁发「铁公鸡勋章」。
+
+### 🛡️ 去劝退（Group Dissuasion）
+看到有人想买东西？赶紧去灭火！成功劝退一个人，你的功德值 +1。
+
+### ✨ 断念后的余韵（The Afterglow of Refusal）
+放弃购买后进入沉浸式灵魂记录界面，AI 从哲学库中找出共鸣名言，让你觉得自己不是在省钱，而是在与苏格拉底、梭罗同行。
+
+### 🧧 春节特辑
+压岁钱防火墙 + 穷困潦倒海报生成器，过年必备社交利器。
+
+---
+
+## 📸 页面预览
+
+### 首页
+
+![首页](docs/screenshots/home-desktop.png)
+
+### 商品详情 - 冷静提示 & 理性消费计算器
+
+![商品详情](docs/screenshots/product-detail.png)
+
+### 百亿愧疚 - AI 劝败分析
+
+![百亿愧疚](docs/screenshots/guilt.png)
+
+### 荒漠求生 - 拔草大作战
+
+![荒漠求生](docs/screenshots/desert.png)
+
+### 个人中心 - 成就系统
+
+![个人中心](docs/screenshots/profile.png)
+
+---
+
+## 🛠️ 技术栈
+
+| 类别 | 技术 |
+|------|------|
+| **框架** | React 18 + TypeScript |
+| **构建** | Vite 5 |
+| **样式** | Tailwind CSS + shadcn/ui |
+| **路由** | React Router v7 |
+| **动画** | Motion (Framer Motion) |
+| **后端** | Supabase (Edge Functions) |
+| **AI** | Supabase Edge Functions (soul-echo, image-recognition, analyze-cart) |
+
+---
+
+## 🚀 快速开始
 
 ### 环境要求
 
-```
-# Node.js ≥ 20
-# npm ≥ 10
-例如：
-# node -v   # v20.18.3
-# npm -v    # 10.8.2
-```
+- Node.js >= 18
+- pnpm >= 8
 
-具体安装步骤如下：
+### 安装 & 运行
 
-### 在 Windows 上安装 Node.js
+```bash
+# 克隆项目
+git clone https://github.com/master-yp-AI/save_more.git
+cd save_more
 
-```
-# Step 1: 访问Node.js官网：https://nodejs.org/，点击下载后，会根据你的系统自动选择合适的版本（32位或64位）。
-# Step 2: 运行安装程序：下载完成后，双击运行安装程序。
-# Step 3: 完成安装：按照安装向导完成安装过程。
-# Step 4: 验证安装：在命令提示符（cmd）或IDE终端（terminal）中输入 node -v 和 npm -v 来检查 Node.js 和 npm 是否正确安装。
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+npx vite
 ```
 
-### 在 macOS 上安装 Node.js
+浏览器访问 http://localhost:5173
+
+---
+
+## 📁 项目结构
 
 ```
-# Step 1: 使用Homebrew安装（推荐方法）：打开终端。输入命令brew install node并回车。如果尚未安装Homebrew，需要先安装Homebrew，
-可以通过在终端中运行如下命令来安装：
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-或者使用官网安装程序：访问Node.js官网。下载macOS的.pkg安装包。打开下载的.pkg文件，按照提示完成安装。
-# Step 2: 验证安装：在命令提示符（cmd）或IDE终端（terminal）中输入 node -v 和 npm -v 来检查 Node.js 和 npm 是否正确安装。
+src/
+├── components/
+│   ├── layouts/          # 布局组件 (TopNav, BottomNav/Sidebar)
+│   ├── product/          # 商品卡片
+│   ├── banner/           # 轮播广告
+│   ├── activity/         # 活动入口
+│   ├── festival/         # 春节特辑组件
+│   └── ui/               # shadcn/ui 基础组件
+├── pages/
+│   ├── HomePage.tsx       # 首页 - 商品推荐
+│   ├── ProductDetailPage  # 商品详情 + 冷静提示
+│   ├── SlashPage.tsx      # 劝一刀 - 反向砍价
+│   ├── GuiltPage.tsx      # 百亿愧疚 - AI 分析
+│   ├── DesertPage.tsx     # 荒漠求生 - 拔草游戏
+│   ├── DissuasionPage.tsx # 去劝退 - 社交灭火
+│   ├── AfterglowPage.tsx  # 断念余韵 - 灵魂记录
+│   ├── CartPage.tsx       # 购物车 - 结算按钮会跑
+│   └── ProfilePage.tsx    # 个人中心 - 成就系统
+├── data/                  # Mock 数据
+├── hooks/                 # 自定义 Hooks
+├── contexts/              # React Context
+└── types/                 # TypeScript 类型定义
 ```
 
-### 安装完后按照如下步骤操作：
+---
 
-```
-# Step 1: 下载代码包
-# Step 2: 解压代码包
-# Step 3: 用IDE打开代码包，进入代码目录
-# Step 4: IDE终端输入命令行，安装依赖：npm i
-# Step 5: IDE终端输入命令行，启动开发服务器：npm run dev -- --host 127.0.0.1
-```
+## 🎯 设计理念
 
-### 如何开发后端服务？
+这不是一个真正的电商 App，而是一个**用讽刺和幽默传递理性消费理念**的 AI 编程案例：
 
-配置环境变量，安装相关依赖
-如需使用数据库，请使用 supabase 官方版本或自行部署开源版本的 Supabase
+- **反转逻辑**：把拼多多的每一个"刺激消费"功能，都反转为"劝退消费"
+- **AI 赋能**：用 AI 分析购物车、生成哲学共鸣、识别商品价值
+- **社交传播**：劝一刀、去劝退、穷困潦倒海报等功能天然具有社交属性
+- **游戏化**：成就系统、功德值、荒漠求生让"省钱"变成一种乐趣
 
-### 如何配置应用中的三方 API？
+---
 
-具体三方 API 调用方法，请参考帮助文档：[源码导出](https://cloud.baidu.com/doc/MIAODA/s/Xmewgmsq7)，了解更多详细内容。
+## 📄 License
 
-## 了解更多
+MIT
 
-您也可以查看帮助文档：[源码导出](https://cloud.baidu.com/doc/MIAODA/s/Xmewgmsq7)，了解更多详细内容。
+---
+
+<p align="center">
+  <em>冲动消费是贫穷的开始，理性消费从省点吧开始。</em>
+</p>

@@ -217,7 +217,7 @@ export default function SlashPage() {
             </p>
           </Card>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {mockProducts.slice(0, 6).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
