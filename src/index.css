@@ -9,54 +9,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --radius: 0.5rem;
-    /* 禁欲系冷色调 - 莫兰迪蓝灰 */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 20%;
+    --radius: 1rem;
+    /* 小红书风格 - 明亮干净 */
+    --background: 0 0% 99%;
+    --foreground: 0 0% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 20%;
+    --card-foreground: 0 0% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 20%;
-    /* 主色调 - 深灰蓝（禁欲系） */
-    --primary: 215 20% 45%;
+    --popover-foreground: 0 0% 20%;
+    /* 主色调 - 小红书红 #FF2442 */
+    --primary: 352 100% 57%;
     --primary-foreground: 0 0% 100%;
-    /* 辅助色 - 拼多多红 */
-    --secondary: 4 85% 52%;
+    /* 辅助色 - 柔和橙色 */
+    --secondary: 25 95% 55%;
     --secondary-foreground: 0 0% 100%;
     /* 柔和背景色 */
-    --muted: 210 20% 95%;
-    --muted-foreground: 215 15% 50%;
-    /* 强调色 - 极淡的蓝灰 */
-    --accent: 210 25% 92%;
-    --accent-foreground: 215 25% 20%;
-    /* 警示色 - 劝败红 */
-    --destructive: 0 72% 51%;
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 45%;
+    /* 强调色 - 浅粉红 */
+    --accent: 352 100% 97%;
+    --accent-foreground: 352 100% 57%;
+    /* 警示色 - 沿用小红书红 */
+    --destructive: 352 100% 57%;
     --destructive-foreground: 0 0% 100%;
-    /* 边框和输入 */
-    --border: 215 20% 88%;
-    --input: 215 20% 88%;
-    --ring: 215 20% 45%;
-    /* 图表色 */
-    --chart-1: 12 88% 55%;
-    --chart-2: 215 20% 45%;
-    --chart-3: 195 25% 50%;
-    --chart-4: 35 85% 60%;
+    /* 边框和输入 - 极淡 */
+    --border: 0 0% 92%;
+    --input: 0 0% 95%;
+    --ring: 352 100% 57%;
+    /* 图表色 - 温馨色系 */
+    --chart-1: 352 100% 57%;
+    --chart-2: 25 95% 55%;
+    --chart-3: 340 85% 60%;
+    --chart-4: 45 95% 60%;
     --chart-5: 280 15% 55%;
     /* 侧边栏 */
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 25% 20%;
-    --sidebar-primary: 215 20% 45%;
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 352 100% 57%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 25% 92%;
-    --sidebar-accent-foreground: 215 25% 20%;
-    --sidebar-border: 215 20% 88%;
-    --sidebar-ring: 215 20% 45%;
-    /* 拼多多风格红色 */
-    --pdd-orange: 4 85% 52%;
-    --pdd-orange-light: 4 85% 97%;
-    --pdd-orange-dark: 4 85% 42%;
-    /* 拼多多价格红 */
-    --pdd-price-red: 4 85% 52%;
+    --sidebar-accent: 0 0% 97%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 352 100% 57%;
+    /* 小红书风格特色色 */
+    --xhs-pink: 340 85% 60%;
+    --xhs-orange: 25 95% 55%;
+    --xhs-yellow: 45 95% 60%;
     /* 功德值绿色 */
     --merit-green: 142 71% 45%;
     --merit-green-light: 142 71% 95%;
@@ -66,42 +64,41 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 215 25% 12%;
-    --foreground: 210 20% 95%;
-    --card: 215 25% 15%;
-    --card-foreground: 210 20% 95%;
-    --popover: 215 25% 15%;
-    --popover-foreground: 210 20% 95%;
-    --primary: 215 20% 65%;
-    --primary-foreground: 215 25% 12%;
-    --secondary: 4 85% 52%;
+    --background: 0 0% 12%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 352 100% 65%;
+    --primary-foreground: 0 0% 12%;
+    --secondary: 25 95% 60%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 215 25% 20%;
-    --muted-foreground: 215 15% 60%;
-    --accent: 215 25% 18%;
-    --accent-foreground: 210 20% 95%;
-    --destructive: 0 72% 51%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 352 100% 18%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 352 100% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 25% 25%;
-    --input: 215 25% 25%;
-    --ring: 215 20% 65%;
-    --chart-1: 12 88% 55%;
-    --chart-2: 215 20% 65%;
-    --chart-3: 195 25% 60%;
-    --chart-4: 35 85% 65%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 352 100% 65%;
+    --chart-1: 352 100% 65%;
+    --chart-2: 25 95% 60%;
+    --chart-3: 340 85% 65%;
+    --chart-4: 45 95% 65%;
     --chart-5: 280 15% 65%;
-    --sidebar-background: 215 25% 12%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 215 20% 65%;
-    --sidebar-primary-foreground: 215 25% 12%;
-    --sidebar-accent: 215 25% 18%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 215 25% 25%;
-    --sidebar-ring: 215 20% 65%;
-    --pdd-orange: 4 85% 52%;
-    --pdd-orange-light: 4 85% 20%;
-    --pdd-orange-dark: 4 85% 65%;
-    --pdd-price-red: 4 85% 52%;
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 352 100% 65%;
+    --sidebar-primary-foreground: 0 0% 12%;
+    --sidebar-accent: 352 100% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 352 100% 65%;
+    --xhs-pink: 340 85% 65%;
+    --xhs-orange: 25 95% 60%;
+    --xhs-yellow: 45 95% 65%;
     --merit-green: 142 71% 55%;
     --merit-green-light: 142 71% 20%;
     --warning-yellow: 45 93% 65%;

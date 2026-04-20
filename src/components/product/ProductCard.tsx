@@ -21,31 +21,31 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card
-      className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow rounded-lg border-border"
+      className="overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 rounded-2xl border-0"
       onClick={() => navigate(`/product/${product.id}`)}
     >
-      <div className="aspect-square relative overflow-hidden bg-muted">
+      <div className="aspect-square relative overflow-hidden bg-muted rounded-t-2xl">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
-        {/* 省点吧标签 - 直角 */}
-        <Badge className="absolute top-1 left-1 bg-secondary text-secondary-foreground text-xs px-1.5 py-0.5 rounded-none font-medium">
+        {/* 省点吧标签 - 圆角 */}
+        <Badge className="absolute top-2 left-2 bg-secondary text-secondary-foreground text-xs px-2 py-1 font-medium shadow-sm">
           省点吧
         </Badge>
         {product.slashCount > 0 && (
-          <Badge className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-xs px-1.5 py-0.5 rounded-none">
+          <Badge className="absolute top-2 right-2 bg-destructive text-destructive-foreground text-xs px-2 py-1 shadow-sm">
             已被劝{product.slashCount}刀
           </Badge>
         )}
       </div>
-      <div className="p-2 space-y-1">
+      <div className="p-3 space-y-2">
         <h3 className="text-sm line-clamp-2 text-foreground leading-tight min-h-[2.5rem]">{product.name}</h3>
         <div className="flex items-baseline gap-1">
           <span className="text-xs text-muted-foreground">券后</span>
-          <span className="text-xs text-secondary">¥</span>
-          <span className="text-xl font-bold text-secondary leading-none">
+          <span className="text-xs text-primary">¥</span>
+          <span className="text-xl font-bold text-primary leading-none">
             {product.currentPrice}
           </span>
           {product.currentPrice > product.originalPrice && (
@@ -56,11 +56,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="flex items-center gap-2">
           {product.currentPrice > product.originalPrice ? (
-            <Badge className="bg-secondary text-secondary-foreground text-xs px-1.5 py-0.5 rounded-none font-medium">
+            <Badge className="bg-xhs-pink text-white text-xs px-2 py-1 font-medium">
               返{product.currentPrice - product.originalPrice}元
             </Badge>
           ) : (
-            <Badge className="bg-secondary text-secondary-foreground text-xs px-1.5 py-0.5 rounded-none font-medium">
+            <Badge className="bg-xhs-orange text-white text-xs px-2 py-1 font-medium">
               {product.couponCount || 0}券
             </Badge>
           )}

@@ -1,14 +1,14 @@
 # CLAUDE.md
 
-本文件为 Claude Code (claude.ai/code) 提供该代码仓库的操作指南。
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 项目概述
+## 项目概述 (Project Overview)
 
 **省点吧 (Save More)** - 一款讽刺性的反电商 Web 应用，通过鼓励用户省钱而非消费来戏仿拼多多。使用 React + TypeScript + Vite 构建。
 
 核心理念：反向购物逻辑 - "与其拼单，不如从源头切断消费欲"。
 
-## 开发命令
+## 开发命令 (Development Commands)
 
 ### 常用命令
 
@@ -38,7 +38,7 @@ npm run lint
 
 **注意**：`npm run dev` 和 `npm run build` 脚本被故意禁用，会输出提示信息引导用户使用 `npx vite` 或 `npm run lint`。
 
-## 架构
+## 架构 (Architecture)
 
 ### 技术栈
 
@@ -133,3 +133,4 @@ src/
 2. **HMR 切换**：开发服务器提供 `/innerapi/v1/sourcecode/__hmr_off`、`__hmr_on`、`__hmr_reload` 端点
 3. **图像识别**：CameraPage 同时使用 `getUserMedia`（桌面端）和文件输入 capture（移动端）
 4. **数字格式化**：ProductCard 使用 `formatSoldCount()` 函数显示（如 "1.2万+"）
+5. **路径别名**：使用 `@` 别名指向 `src` 目录

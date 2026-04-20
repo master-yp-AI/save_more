@@ -67,11 +67,11 @@ export default {
                 success: 'hsl(var(--success))',
                 warning: 'hsl(var(--warning))',
                 info: 'hsl(var(--info))',
-                pdd: {
-                    orange: 'hsl(var(--pdd-orange))',
-                    'orange-light': 'hsl(var(--pdd-orange-light))',
-                    'orange-dark': 'hsl(var(--pdd-orange-dark))',
-                    'price-red': 'hsl(var(--pdd-price-red))'
+                xhs: {
+                    red: 'hsl(var(--primary))',
+                    pink: 'hsl(var(--xhs-pink))',
+                    orange: 'hsl(var(--xhs-orange))',
+                    yellow: 'hsl(var(--xhs-yellow))'
                 },
                 merit: {
                     green: 'hsl(var(--merit-green))',

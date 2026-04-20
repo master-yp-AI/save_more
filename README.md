@@ -25,32 +25,31 @@
 ### ✨ 断念后的余韵（The Afterglow of Refusal）
 放弃购买后进入沉浸式灵魂记录界面，AI 从哲学库中找出共鸣名言，让你觉得自己不是在省钱，而是在与苏格拉底、梭罗同行。
 
-### 🧧 春节特辑
-压岁钱防火墙 + 穷困潦倒海报生成器，过年必备社交利器。
-
 ---
 
 ## 📸 页面预览
 
 ### 首页
 
-![首页](docs/screenshots/home-desktop.png)
+| 桌面端 | 移动端 |
+|:------:|:------:|
+| <img src="docs/screenshots/home-desktop.png" width="450" alt="首页（桌面端）" style="border-radius: 6px;"> | <img src="docs/screenshots/home-mobile.png" width="200" alt="首页（移动端）" style="border-radius: 6px;"> |
 
-### 商品详情 - 冷静提示 & 理性消费计算器
+### 商品详情
 
-![商品详情](docs/screenshots/product-detail.png)
+<img src="docs/screenshots/product-detail.png" width="600" alt="商品详情" style="border-radius: 6px; margin: 10px 0;">
 
-### 百亿愧疚 - AI 劝败分析
+### 百亿愧疚
 
-![百亿愧疚](docs/screenshots/guilt.png)
+<img src="docs/screenshots/guilt.png" width="600" alt="百亿愧疚" style="border-radius: 6px; margin: 10px 0;">
 
-### 荒漠求生 - 拔草大作战
+### 荒漠求生
 
-![荒漠求生](docs/screenshots/desert.png)
+<img src="docs/screenshots/desert.png" width="600" alt="荒漠求生" style="border-radius: 6px; margin: 10px 0;">
 
-### 个人中心 - 成就系统
+### 个人中心
 
-![个人中心](docs/screenshots/profile.png)
+<img src="docs/screenshots/profile.png" width="600" alt="个人中心" style="border-radius: 6px; margin: 10px 0;">
 
 ---
 
@@ -104,7 +103,7 @@ src/
 │   ├── activity/         # 活动入口
 │   ├── festival/         # 春节特辑组件
 │   └── ui/               # shadcn/ui 基础组件
-├── pages/
+├── pages/                # 页面组件
 │   ├── HomePage.tsx       # 首页 - 商品推荐
 │   ├── ProductDetailPage  # 商品详情 + 冷静提示
 │   ├── SlashPage.tsx      # 劝一刀 - 反向砍价
@@ -119,6 +118,18 @@ src/
 ├── contexts/              # React Context
 └── types/                 # TypeScript 类型定义
 ```
+
+---
+
+## 🎨 设计风格
+
+本项目采用 **小红书风格** 设计：
+
+- **主色调**：小红书红 (#FF2442)
+- **圆角设计**：大圆角卡片，温馨友好
+- **阴影效果**：柔和的悬浮阴影
+- **间距布局**：宽松舒适的视觉体验
+- **整体氛围**：明亮、干净、温馨
 
 ---
 
